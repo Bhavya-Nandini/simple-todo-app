@@ -1,4 +1,5 @@
 const todos = [];
+let isPremiumUser = false;
 
 function addTodo(title) {
   if (!title || title.trim() === '') {
@@ -23,8 +24,22 @@ function listTodos() {
   return [...todos];
 }
 
+function setPremiumUser(status) {
+  isPremiumUser = Boolean(status);
+}
+
+function getPremiumTodos() {
+  if (!isPremiumUser) {
+    throw new Error('Premium subscription required');
+  }
+
+  return todos.filter(todo => todo.completed);
+}
+
 module.exports = {
   addTodo,
   completeTodo,
-  listTodos
+  listTodos,
+  setPremiumUser,
+  getPremiumTodos
 };
