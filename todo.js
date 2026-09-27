@@ -23,8 +23,18 @@ function listTodos() {
   return [...todos];
 }
 
+function searchTodos(keyword) {
+  if (!keyword || keyword.trim() === '') {
+    return [];
+  }
+
+  const searchTerm = keyword.trim().toLowerCase();
+  return todos.filter(todo => todo.title.toLowerCase().includes(searchTerm));
+}
+
 module.exports = {
   addTodo,
   completeTodo,
-  listTodos
+  listTodos,
+  searchTodos
 };
