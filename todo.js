@@ -20,7 +20,7 @@ function completeTodo(index) {
 }
 
 function listTodos() {
-  return todos;
+  return [...todos];
 }
 
 module.exports = {
